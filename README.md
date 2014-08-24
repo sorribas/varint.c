@@ -31,6 +31,19 @@ make
 ```
 and you should get a static library in `varint.a`.
 
+If you want to compile the example you can do
+
+```
+gcc example.c varint.c -o example
+```
+
+and run it with
+
+```
+./example
+```
+
+
 License
 -------
 
