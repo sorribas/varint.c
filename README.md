@@ -29,3 +29,7 @@ make
 ```
 and you should get a static library in `varint.a`.
 
+License
+-------
+
+MIT
