@@ -3,7 +3,7 @@ varint.c
 
 [![build status](https://secure.travis-ci.org/sorribas/varint.c.png)](http://travis-ci.org/sorribas/varint.c)
 
-Static C library to use [protobuf-style varint](https://developers.google.com/protocol-buffers/docs/encoding#varints) in C.
+Static C library to use [protobuf-style varint](https://developers.google.com/protocol-buffers/docs/encoding#varints).
 
 API
 ---
@@ -38,7 +38,7 @@ and you should get a static library in `varint.a`.
 If you want to compile the example you can do
 
 ```
-gcc example.c varint.c -o example
+gcc example.c varint.a -o example
 ```
 
 and run it with
