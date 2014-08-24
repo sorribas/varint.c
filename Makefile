@@ -9,3 +9,9 @@ lib:
 
 clean:
 	rm *.o
+
+test:
+	$(CC) test/main.c varint.a -o test/main
+	./test/main
+
+.PHONY: test
