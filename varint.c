@@ -24,7 +24,6 @@ long long varint_decode(char* buf, int len, unsigned char* bytes) {
   int bits = 0;
   char *ptr = buf;
   long long ll;
-  int i = 0;
   while (*ptr & MSB) {
     ll = *ptr;
     result += ((ll & 0x7F) << bits);
