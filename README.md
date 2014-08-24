@@ -21,6 +21,10 @@ Decodes a varint passed as a char array and returns it as a `unsigned long long`
 If you want to know how many bytes the decoder when through, pass a the `bytes`
 argument and it will be stored there.
 
+### `int varint_encoding_length(unsigned long long number);`
+
+Returns the length of the varint buffer to encode this number.
+
 Building
 --------
 

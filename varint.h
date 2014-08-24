@@ -3,6 +3,6 @@
 
 char* varint_encode(unsigned long long, char*, int, unsigned char*);
 unsigned long long varint_decode(char*, int, unsigned char*);
-int encodingLength(unsigned long long);
+int varint_encoding_length(unsigned long long);
 
 #endif
