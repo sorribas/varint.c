@@ -15,17 +15,7 @@ static const unsigned long long N7 = 562949953421312;
 static const unsigned long long N8 = 72057594037927936;
 static const unsigned long long N9 = 9223372036854775808U;
 
-long long ll_pow(long long base, int exp) {
-  int i;
-  long long res = 1;
-  for (i = 0; i < exp; i++) {
-    res *= base;
-  }
-
-  return res;
-}
-
-int varint_encoding_length(long long n) {
+int varint_encoding_length(unsigned long long n) {
   return (
       n < N1 ? 1
     : n < N2 ? 2
@@ -40,7 +30,7 @@ int varint_encoding_length(long long n) {
   );
 }
 
-char* varint_encode(long long n, char* buf, int len, unsigned char* bytes) {
+char* varint_encode(unsigned long long n, char* buf, int len, unsigned char* bytes) {
   char* ptr = buf;
 
   while (n & MSBALL) {
@@ -54,11 +44,11 @@ char* varint_encode(long long n, char* buf, int len, unsigned char* bytes) {
   return buf;
 }
 
-long long varint_decode(char* buf, int len, unsigned char* bytes) {
-  long long result = 0;
+unsigned long long varint_decode(char* buf, int len, unsigned char* bytes) {
+  unsigned long long result = 0;
   int bits = 0;
   char *ptr = buf;
-  long long ll;
+  unsigned long long ll;
   while (*ptr & MSB) {
     ll = *ptr;
     result += ((ll & 0x7F) << bits);

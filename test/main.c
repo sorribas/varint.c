@@ -11,7 +11,7 @@ void tassert(int x) {
 }
 
 void encode_test() {
-  long long number = 23113293191329;
+  unsigned long long number = 23113293191329;
   char* str = calloc(7, sizeof(char));
   unsigned char bts;
 
@@ -49,7 +49,7 @@ void encode_test() {
 void decode_test() {
   char str[] = {0x90, 0xD7, 0x99, 0xDB, 0x82, 0xB2, 0xF0, 0x01, 0xEE, 0xEE, 0xEE};
   unsigned char bts = 0;
-  long long res = 0;
+  unsigned long long res = 0;
 
   res = varint_decode(str, 11, &bts);
   tassert(bts == 8);
