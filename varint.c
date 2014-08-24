@@ -19,20 +19,23 @@ char* varint_encode(long long n, char* buf, int len, unsigned char* bytes) {
   return buf;
 }
 
-long long varint_decode(char* buf, int len) {
+long long varint_decode(char* buf, int len, unsigned char* bytes) {
   long long result = 0;
   int bits = 0;
+  char *ptr = buf;
   long long ll;
   int i = 0;
-  while (*buf & MSB) {
-    ll = *buf;
+  while (*ptr & MSB) {
+    ll = *ptr;
     result += ((ll & 0x7F) << bits);
-    buf++;
+    ptr++;
     bits += 7;
-    assert(++i < len);
+    assert((ptr - buf) < len);
   }
-  ll = *buf;
+  ll = *ptr;
   result += ((ll & 0x7F) << bits);
+
+  if (bytes != NULL) *bytes = ptr - buf + 1;
 
   return result;
 }
