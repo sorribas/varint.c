@@ -18,5 +18,17 @@ char* varint_encode(long long n, char* buf, unsigned char* bytes) {
 }
 
 long long varint_decode(char* buf) {
-  return 0;
+  long long result = 0;
+  int bits = 0;
+  long long ll;
+  while (*buf & MSB) {
+    ll = *buf;
+    result += ((ll & 0x7F) << bits);
+    buf++;
+    bits += 7;
+  }
+  ll = *buf;
+  result += ((ll & 0x7F) << bits);
+
+  return result;
 }
