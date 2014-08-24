@@ -2,8 +2,43 @@
 #include "varint.h"
 #define NULL 0
 
-static char MSB = 0x80;
-static char MSBALL = ~0x7F;
+static const char MSB = 0x80;
+static const char MSBALL = ~0x7F;
+
+static const unsigned long long N1 = 128; // 2 ^ 7
+static const unsigned long long N2 = 16384;
+static const unsigned long long N3 = 2097152;
+static const unsigned long long N4 = 268435456;
+static const unsigned long long N5 = 34359738368;
+static const unsigned long long N6 = 4398046511104;
+static const unsigned long long N7 = 562949953421312;
+static const unsigned long long N8 = 72057594037927936;
+static const unsigned long long N9 = 9223372036854775808U;
+
+long long ll_pow(long long base, int exp) {
+  int i;
+  long long res = 1;
+  for (i = 0; i < exp; i++) {
+    res *= base;
+  }
+
+  return res;
+}
+
+int varint_encoding_length(long long n) {
+  return (
+      n < N1 ? 1
+    : n < N2 ? 2
+    : n < N3 ? 3
+    : n < N4 ? 4
+    : n < N5 ? 5
+    : n < N6 ? 6
+    : n < N7 ? 7
+    : n < N8 ? 8
+    : n < N9 ? 9
+    :         10
+  );
+}
 
 char* varint_encode(long long n, char* buf, int len, unsigned char* bytes) {
   char* ptr = buf;

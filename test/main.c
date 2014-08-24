@@ -62,9 +62,23 @@ void decode_test() {
   tassert(res == 2328);
 }
 
+void encoding_length_test() {
+  tassert(varint_encoding_length(2) == 1);
+  tassert(varint_encoding_length(16383) == 2);
+  tassert(varint_encoding_length(2097151) == 3);
+  tassert(varint_encoding_length(268435455) == 4);
+  tassert(varint_encoding_length(34359738367) == 5);
+  tassert(varint_encoding_length(4398046511103) == 6);
+  tassert(varint_encoding_length(562949953421311) == 7);
+  tassert(varint_encoding_length(72057594037927935) == 8);
+  tassert(varint_encoding_length(9223372036854775807U) == 9);
+  tassert(varint_encoding_length(18446744073709551615U) == 10);
+}
+
 int main() {
   encode_test();
   decode_test();
+  encoding_length_test();
   printf("%d tests ok\n", tests_ran);
   return 0;
 }
