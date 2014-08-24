@@ -1,6 +1,8 @@
 varint.c
 ========
 
+[![build status](https://secure.travis-ci.org/sorribas/varint.c.png)](http://travis-ci.org/sorribas/varint.c)
+
 Static C library to use [protobuf-style varint](https://developers.google.com/protocol-buffers/docs/encoding#varints) in C.
 
 API
