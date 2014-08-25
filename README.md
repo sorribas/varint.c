@@ -46,7 +46,14 @@ and run it with
 ```
 ./example
 ```
+Clibs
+-----
 
+You can also install using clibs
+
+```
+clib install sorribas/varint.c
+```
 
 License
 -------
