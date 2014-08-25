@@ -1,0 +1,9 @@
+{
+  "name": "varint.c",
+  "version": "0.1.0",
+  "repo": "sorribas/varint.c",
+  "description": "Static C library to use protobuf-style varint.",
+  "keywords": [],
+  "license": "MIT",
+  "src": ["varint.c", "varint.h"]
+}
